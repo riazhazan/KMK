@@ -23,9 +23,6 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
-import android.content.Context
-import android.util.AttributeSet
-import com.kmk_uniworld.Views.Home.HomeActivity
 import com.kmk_uniworld.R
 import com.kmk_uniworld.Views.Home.HomeTabActivity
 

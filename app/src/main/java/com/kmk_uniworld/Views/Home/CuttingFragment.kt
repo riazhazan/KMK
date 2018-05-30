@@ -35,7 +35,11 @@ class CuttingFragment : Fragment() {
         mRecyclerView = view.findViewById(R.id.recyclerView)
         mRecyclerView.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
         val schoolList = generateTestData()
-        var adapter = HomeRecyclerAdapter(schoolList)
+        var adapter = HomeRecyclerAdapter(schoolList){ itemDto: School, position: Int ->
+
+            println("MyActivity Clicked on item  ${itemDto.schoolName} at position $position")
+
+        }
         mRecyclerView.adapter = adapter
         return view
     }

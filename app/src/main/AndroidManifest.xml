@@ -29,7 +29,8 @@
             android:name=".Views.Home.HomeTabActivity"
             android:label="@string/title_activity_home_tab" />
         <activity android:name=".Views.NewOrder.AddNewOrder" />
-        <activity android:name=".Views.NewOrder.AddNewSchool"></activity>
+        <activity android:name=".Views.NewOrder.AddNewSchool" />
+        <activity android:name=".Views.Details.OrderDetailsActivity"></activity>
     </application>
 
 </manifest>

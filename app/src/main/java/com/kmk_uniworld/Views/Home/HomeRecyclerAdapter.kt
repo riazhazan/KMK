@@ -10,11 +10,13 @@ import com.kmk_uniworld.DataModel.School
 import com.kmk_uniworld.R
 import java.util.zip.Inflater
 
-class HomeRecyclerAdapter(val schoolList: ArrayList<School>) : RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>() {
+class HomeRecyclerAdapter(val schoolList: ArrayList<School>, val clickListener: (School, Int) -> Unit) : RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>() {
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder?.txtName?.text = schoolList[position].schoolName
         holder?.txtTitle?.text = schoolList[position].schoolId
+        holder?.itemView.setOnClickListener{clickListener(schoolList[position], position)}
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,4 +33,8 @@ class HomeRecyclerAdapter(val schoolList: ArrayList<School>) : RecyclerView.Adap
         val txtTitle = itemView.findViewById<TextView>(R.id.txtTitle)
 
     }
+}
+
+interface OnItemClickListener {
+    fun onItemClick(item: School)
 }

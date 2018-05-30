@@ -13,17 +13,9 @@ import android.widget.LinearLayout
 import com.kmk_uniworld.DataModel.School
 
 import com.kmk_uniworld.R
-import kotlinx.android.synthetic.main.activity_home.*
+import com.kmk_uniworld.Views.Details.OrderDetailsActivity
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- *
- */
 class HomeFragment : Fragment() {
 
     private lateinit var mRecyclerView: RecyclerView
@@ -36,11 +28,19 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         mRecyclerView = view.findViewById(R.id.recyclerView)
         mRecyclerView.layoutManager = LinearLayoutManager(activity, LinearLayout.VERTICAL, false)
+
         val schoolList = generateTestData()
-        var adapter = HomeRecyclerAdapter(schoolList)
+        var adapter = HomeRecyclerAdapter(schoolList){ itemDto: School, position: Int ->
+
+            val intent = OrderDetailsActivity.newIntent(inflater.context, schoolID = itemDto.schoolId)
+            startActivity(intent)
+
+        }
         mRecyclerView.adapter = adapter
+
         return view
     }
+
 
     fun generateTestData(): ArrayList<School> {
         var result = ArrayList<School>()
